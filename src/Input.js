@@ -3,7 +3,7 @@ import React from 'react';
 const Input = (props) => {
     return (
         <div>
-            <input type='number' onChange={e => props.onChange(e.currentTarget.value)} />
+            <input type='time' onChange={e => props.onChange(e.currentTarget.value)} />
         </div>
     );
 };
