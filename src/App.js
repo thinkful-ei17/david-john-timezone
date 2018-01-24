@@ -1,7 +1,8 @@
 import React from 'react';
-import Input from './Input'
-import Selection from './Selection'
-import Output from './Output'
+import Input from './Input';
+import Selection from './Selection';
+import Output from './Output';
+var moment = require('moment');
 
 class App extends React.Component {
   constructor(props) {
@@ -11,6 +12,9 @@ class App extends React.Component {
       fromZone: 'PST',
       toZone: 'CST'
     };
+  }
+  nowTime(){
+    return moment();
   }
 
   timeConverter(fromZoneTime) {
@@ -22,10 +26,9 @@ class App extends React.Component {
     }
 
     if (this.state.fromZone in timeZones && this.state.toZone in timeZones) {
-      const from = timeZones[this.state.fromZone];
       const to = timeZones[this.state.toZone];
       const result = this.state.timeInput;
-      console.log(from, to, result);
+      console.log(moment().add(to, 'h').format());
     }
 
     // const result = timeZones.filter(zone => zone === this.state.fromZone)
@@ -43,8 +46,9 @@ class App extends React.Component {
           <h1 className="App-title">Time Zone Converter</h1>
         </header>
         {this.timeConverter()}
-        <Input onChange={e => this.setState({timeInput: e})}/>
-        <Selection onSelect={e=>this.setState({fromZone:e})} label='From ' />
+        {this.nowTime()}
+        {/* <Input onChange={e => this.setState({timeInput: e})}/> */}
+        {/* <Selection onSelect={e=>this.setState({fromZone:e})} label='From ' /> */}
         <Selection onSelect={e=>this.setState({toZone:e})} label='To ' />
         <Output />
       </div>

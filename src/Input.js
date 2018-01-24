@@ -1,11 +1,12 @@
-import React from 'react';
+// import React from 'react';
 
-const Input = (props) => {
-    return (
-        <div>
-            <input type='time' onChange={e => props.onChange(e.currentTarget.value)} />
-        </div>
-    );
-};
+// const Input = (props) => {
+//     return (
+//         <div>
+//             moment();
+//         </div>
+//     );
+// };
 
-export default Input;
+// /* <input type='time' onChange={e => props.onChange(e.currentTarget.value)} /> */
+// export default Input;
