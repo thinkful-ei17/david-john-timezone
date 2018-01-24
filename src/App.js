@@ -7,17 +7,17 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      timeInput: null,
-      fromZone: 'America/New_York',
+      fromZone: '',
       toZone: ''
     };
   }
+  
 
   render() {
     
     const now = moment().format('YYYY-MM-DD hh:mm');
-    const fromTZ = moment.tz(now, this.state.fromZone).format();
-    const toTZ = moment.tz(now, this.state.toZone).format();
+    const fromTZ = moment.tz(now, this.state.fromZone).format('YYYY-MM-DD hh:mm');
+    const toTZ = moment.tz(fromTZ, this.state.toZone).format('YYYY-MM-DD hh:mm');
     console.log('from', fromTZ, 'to', toTZ);
     // onChange={()=>this.timeConverter()}
 
@@ -28,7 +28,7 @@ class App extends React.Component {
         </header>
         <Selection onSelect={e=>this.setState({fromZone:e})} label='From ' />
         <Selection onSelect={e=>this.setState({toZone:e})} label='To ' />
-        <Output />
+        <Output result={toTZ} />
       </div>
     );
   }
